@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/javiercbk/mongo-teen",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "bson": "^1.0.4",
     "lodash": "^4.17.4",
     "mingo": "^2.0.2",
