@@ -1,3 +1,6 @@
+
+
+[![Build Status](https://travis-ci.org/javiercbk/naive-mongo.svg?branch=master)](https://travis-ci.org/javiercbk/naive-mongo)
 [![Coverage Status](https://coveralls.io/repos/javiercbk/naive-mongo/badge.svg?branch=master)](https://coveralls.io/r/javiercbk/naive-mongo?branch=master)
 
 # Naive Mongo
