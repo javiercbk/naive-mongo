@@ -1,12 +1,12 @@
 {
   "author": "Javier Lecuona <javierlecuona@gmail.com>",
-  "name": "mongo-teen",
+  "name": "naive-mongo",
   "version": "1.0.0",
   "description": "An in-memory mongodb naive implementation",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/javiercbk/mongo-teen.git"
+    "url": "https://github.com/javiercbk/naive-mongo.git"
   },
   "keywords": [
     "mongodb",
@@ -17,9 +17,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/javiercbk/mongo-teen/issues"
+    "url": "https://github.com/javiercbk/naive-mongo/issues"
   },
-  "homepage": "https://github.com/javiercbk/mongo-teen",
+  "homepage": "https://github.com/javiercbk/naive-mongo",
   "dependencies": {
     "bluebird": "^3.5.0",
     "bson": "^1.0.4",
