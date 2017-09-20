@@ -1,7 +1,7 @@
 {
   "author": "Javier Lecuona <javierlecuona@gmail.com>",
   "name": "naive-mongo",
-  "version": "1.0.0",
+  "version": "2.2.0",
   "description": "An in-memory mongodb naive implementation",
   "main": "index.js",
   "repository": {

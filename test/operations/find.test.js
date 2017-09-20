@@ -6,7 +6,7 @@ const Db = require('../../lib/db');
 
 const { expect } = chai;
 
-describe('Find tests', () => {
+describe('find tests', () => {
   it('Find promise test', (done) => {
     const db = new Db('find-test');
     const collection = db.collection('test');
@@ -32,5 +32,36 @@ describe('Find tests', () => {
         done();
       })
       .catch(done);
+  });
+
+  it('Find callback test', (done) => {
+    const db = new Db('find-test');
+    const collection = db.collection('test');
+    collection.insertMany([{ a: 1 }, { a: 2 }, { a: 3 }], (err, insertResults) => {
+      expect(err).to.not.exist;
+      expect(insertResults).to.exist;
+      collection.find().toArray((err1, docs) => {
+        expect(err1).to.not.exist;
+        expect(docs).to.exist;
+        expect(3).to.eql(docs.length);
+        done();
+      });
+    });
+  });
+  it('Find callback with skip limit', (done) => {
+    const db = new Db('find-test');
+    const collection = db.collection('test');
+    collection.insertMany([{ a: 1 }, { a: 2 }, { a: 3 }], (err, insertResults) => {
+      expect(err).to.not.exist;
+      expect(insertResults).to.exist;
+      collection.find().skip(1).limit(1).project({ b: 1 })
+        .toArray((err1, docs) => {
+          expect(err1).to.not.exist;
+          expect(docs).to.exist;
+          expect(1).to.eql(docs.length);
+          expect(2).to.eql(docs[0].a);
+          done();
+        });
+    });
   });
 });

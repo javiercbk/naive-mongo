@@ -6,7 +6,7 @@ const Db = require('../../lib/db');
 
 const { expect } = chai;
 
-describe('Count tests', () => {
+describe('count tests', () => {
   it('Count promise test', (done) => {
     const db = new Db('count-test');
     const collection = db.collection('test');

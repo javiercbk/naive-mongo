@@ -49,7 +49,7 @@ const executeAggregate = (collection, cb) => collection.aggregate([{
 },
 ], cb);
 
-describe('Aggregate tests', () => {
+describe('aggregate tests', () => {
   it('aggregate promise test', (done) => {
     const db = new Db('aggregate-test');
     const collection = db.collection('test');
