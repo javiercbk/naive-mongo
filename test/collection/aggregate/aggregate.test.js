@@ -2,7 +2,7 @@
 const chai = require('chai');
 require('mocha');
 
-const Db = require('../../lib/db');
+const Db = require('../../../lib/db');
 
 const { expect } = chai;
 
@@ -57,8 +57,8 @@ describe('aggregate tests', () => {
       .then(() => executeAggregate(collection))
       .then((result) => {
         testResults(result);
-        done();
-      }).catch(done);
+      }).then(() => { done(); })
+      .catch(done);
   });
 
   it('aggregate callback test', (done) => {
