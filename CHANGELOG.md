@@ -1,3 +1,4 @@
 Changelog
 =========
-## 2.2.3 / 2017-09-23
+## 2.2.4 / 2017-09-22
+* Added `$lookup` support to aggregation
