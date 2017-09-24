@@ -1,6 +1,7 @@
 /* global describe, it */
 const chai = require('chai');
 require('mocha');
+const { Aggregator } = require('mingo');
 
 const Db = require('../../../lib/db');
 
@@ -73,5 +74,79 @@ describe('aggregate tests', () => {
         done();
       });
     });
+  });
+
+  it.skip('should cloneDeep object with false property', () => {
+    const oper = [{
+      $addFields: {
+        accountInfo: {
+          $arrayElemAt: ['$accounts', 0],
+        },
+      },
+    }];
+    const col = [{
+      _id: '59c52580809dd0032d75238a',
+      email: 'an@email.com',
+      deleted: false,
+      accounts: [{
+        createdAt: '2017-09-22T15:00:17.418Z',
+        updatedAt: '2017-09-22T15:00:17.418Z',
+      }],
+    }];
+    const expected = [{
+      _id: '59c52580809dd0032d75238a',
+      email: 'an@email.com',
+      deleted: false,
+      accountInfo: {
+        createdAt: '2017-09-22T15:00:17.418Z',
+        updatedAt: '2017-09-22T15:00:17.418Z',
+      },
+      accounts: [{
+        createdAt: '2017-09-22T15:00:17.418Z',
+        updatedAt: '2017-09-22T15:00:17.418Z',
+      }],
+    }];
+    const aggregatedCollection = new Aggregator(oper).run(col);
+    expect(expected).to.deep.equal(aggregatedCollection);
+  });
+
+  it.skip('test mingo $addFields with $arrayElemAt', (done) => {
+    const obj = {
+      _id: '59c52580809dd0032d75238a',
+      email: 'an@email.com',
+      deleted: false,
+      accounts: [{
+        createdAt: '2017-09-22T15:00:17.418Z',
+        updatedAt: '2017-09-22T15:00:17.418Z',
+      }],
+    };
+    const col = [obj];
+    const oper = [{
+      $addFields: {
+        accountInfo: {
+          $arrayElemAt: ['$accounts', 0],
+        },
+      },
+    }];
+    const expected = [{
+      _id: '59c52580809dd0032d75238a',
+      email: 'an@email.com',
+      accountInfo: {
+        createdAt: '2017-09-22T15:00:17.418Z',
+        updatedAt: '2017-09-22T15:00:17.418Z',
+      },
+      accounts: [{
+        createdAt: '2017-09-22T15:00:17.418Z',
+        updatedAt: '2017-09-22T15:00:17.418Z',
+      }],
+    }];
+    const db = new Db('aggregate-test');
+    const collection = db.collection('test');
+    collection.insertMany(col, { w: 1 })
+      .then(() => collection.aggregate(oper))
+      .then((result) => {
+        expect(expected).to.deep.equal(result);
+      }).then(() => { done(); })
+      .catch(done);
   });
 });
