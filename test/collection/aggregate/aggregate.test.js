@@ -76,7 +76,7 @@ describe('aggregate tests', () => {
     });
   });
 
-  it.skip('should cloneDeep object with false property', () => {
+  it('should cloneDeep object with false property', () => {
     const oper = [{
       $addFields: {
         accountInfo: {
@@ -110,7 +110,7 @@ describe('aggregate tests', () => {
     expect(expected).to.deep.equal(aggregatedCollection);
   });
 
-  it.skip('test mingo $addFields with $arrayElemAt', (done) => {
+  it('test mingo $addFields with $arrayElemAt', (done) => {
     const obj = {
       _id: '59c52580809dd0032d75238a',
       email: 'an@email.com',
@@ -131,6 +131,7 @@ describe('aggregate tests', () => {
     const expected = [{
       _id: '59c52580809dd0032d75238a',
       email: 'an@email.com',
+      deleted: false,
       accountInfo: {
         createdAt: '2017-09-22T15:00:17.418Z',
         updatedAt: '2017-09-22T15:00:17.418Z',
