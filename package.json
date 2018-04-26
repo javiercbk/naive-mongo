@@ -1,7 +1,7 @@
 {
   "author": "Javier Lecuona <javierlecuona@gmail.com>",
   "name": "naive-mongo",
-  "version": "2.2.9",
+  "version": "3.0.7",
   "description": "An in-memory mongodb naive implementation",
   "main": "index.js",
   "repository": {
@@ -25,11 +25,11 @@
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "dependencies": {
-    "bluebird": "^3.5.0",
+    "bluebird": "^3.5.1",
     "bson": "^1.0.4",
-    "lodash": "^4.17.4",
-    "moment": "^2.18.1",
-    "mongodb-core": "^2.1.15"
+    "lodash": "^4.17.10",
+    "moment": "^2.22.1",
+    "mongodb-core": "^3.0.7"
   },
   "devDependencies": {
     "chai": "^4.1.2",
